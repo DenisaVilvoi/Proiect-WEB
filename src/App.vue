@@ -4,18 +4,27 @@ import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <v-app>
+    <v-app-bar title="Application"></v-app-bar>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+    <v-navigation-drawer>
+      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-  <main>
-    <TheWelcome />
-  </main>
+<div class="wrapper">
+  <HelloWorld msg="You did it!" />
+</div>
+<v-btn variant="outlined">
+  Button
+</v-btn>
+</v-navigation-drawer>
+
+    <v-main> 
+      <TheWelcome />
+    </v-main>
+  </v-app>
 </template>
+
+
 
 <style scoped>
 header {
