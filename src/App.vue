@@ -1,27 +1,35 @@
 <template>
-<main>
-    <v-app>
-      <v-app-bar title="My Deck">
-        <v-btn href="#/news" icon="mdi-home">a</v-btn>
-        <v-btn @click="toggleTheme" icon="mdi-animation">b</v-btn>
-      </v-app-bar>
-      <v-main>
-        <component :is="currentView" />
-      </v-main>
-    </v-app>
-  </main>
+  <main>
+      <v-app>
 
-    </template>
+        <v-app-bar
+          color="orange"
+          elevation="20"
+          rounded 
+          title="NewsApp">
+          <v-btn href="/news" icon="">Search</v-btn>
+          <v-btn @click="toggleTheme">Theme</v-btn>
+          
+        </v-app-bar>
+
+        <v-main>
+          <component :is="currentView" />
+        </v-main>
+
+      </v-app>
+
+    </main>
+  </template>
     
-    <script>
-    import NewsApp from "./components/NewsApp.vue"
-    import { useTheme } from "vuetify";
-    import NotFound from "./404.vue"
+<script lang="ts">
+  import NewsApp from "./components/NewsApp.vue"
+  import { useTheme } from "vuetify";
 
-    const routes = {
+  
+  const routes = {
   "/news": NewsApp,
-
 };
+
 export default {
   setup() {
     const theme = useTheme();
@@ -40,7 +48,7 @@ export default {
   },
   computed: {
     currentView() {
-      return routes[this.currentPath.slice(1) || "/"] || NotFound;
+      return routes[this.currentPath.slice(1) || "/"] ;
     },
   },
   mounted() {
@@ -51,3 +59,4 @@ export default {
   methods: {},
 };
 </script>
+
