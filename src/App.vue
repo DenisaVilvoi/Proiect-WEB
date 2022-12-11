@@ -1,56 +1,53 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <v-app>
-    <v-app-bar title="Application"></v-app-bar>
+<main>
+    <v-app>
+      <v-app-bar title="My Deck">
+        <v-btn href="#/news" icon="mdi-home">a</v-btn>
+        <v-btn @click="toggleTheme" icon="mdi-animation">b</v-btn>
+      </v-app-bar>
+      <v-main>
+        <component :is="currentView" />
+      </v-main>
+    </v-app>
+  </main>
 
-    <v-navigation-drawer>
-      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    </template>
+    
+    <script>
+    import NewsApp from "./components/NewsApp.vue"
+    import { useTheme } from "vuetify";
+    import NotFound from "./404.vue"
 
-<div class="wrapper">
-  <HelloWorld msg="You did it!" />
-</div>
-<v-btn variant="outlined">
-  Button
-</v-btn>
-</v-navigation-drawer>
+    const routes = {
+  "/news": NewsApp,
 
-    <v-main> 
-      <TheWelcome />
-    </v-main>
-  </v-app>
-</template>
-
-
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+};
+export default {
+  setup() {
+    const theme = useTheme();
+    return {
+      theme,
+      toggleTheme: () =>
+        (theme.global.name.value = theme.global.current.value.dark
+          ? "light"
+          : "dark"),
+    };
+  },
+  data() {
+    return {
+      currentPath: window.location.hash,
+    };
+  },
+  computed: {
+    currentView() {
+      return routes[this.currentPath.slice(1) || "/"] || NotFound;
+    },
+  },
+  mounted() {
+    window.addEventListener("hashchange", () => {
+      this.currentPath = window.location.hash;
+    });
+  },
+  methods: {},
+};
+</script>
