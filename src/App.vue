@@ -1,16 +1,17 @@
 <template>
+
   <main>
     <v-app>
 
       <v-app-bar color="orange" elevation="30" rounded title="NewsApp">
-     
+
         <v-btn href="#/news" icon="mdi-magnify"></v-btn>
         <v-btn href="#/" icon="mdi-home"></v-btn>
+        <v-btn href="#?" icon="mdi-information-outline"></v-btn>
         <v-btn @click="toggleTheme" icon="mdi-animation"></v-btn>
-
       </v-app-bar>
-      
-       
+
+
       <v-main>
         <component :is="currentView" />
         <home v-if="(this.currentPath !== '#/news')" />
@@ -19,17 +20,20 @@
     </v-app>
 
   </main>
+
 </template>
     
 <script>
 import Search from "./components/Search.vue";
 import home from "./components/Home.vue";
 import { useTheme } from "vuetify";
+import About from "./components/About.vue";
 
 
 const routes = {
   "/news": Search,
   "/": home,
+  "?": About,
 };
 
 export default {
@@ -44,9 +48,10 @@ export default {
     };
   },
   data() {
-    return { currentPath: window.location.hash,
- 
-     
+    return {
+      currentPath: window.location.hash,
+
+
     };
   },
   computed: {
@@ -62,4 +67,5 @@ export default {
   methods: {},
 };
 </script>
+
 
