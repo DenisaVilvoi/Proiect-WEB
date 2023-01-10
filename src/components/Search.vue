@@ -61,13 +61,11 @@ export default {
     <div v-for="art in articol">
    
       <v-fade-transition mode="out-in">
-      <v-row>
-        <v-col cols="6">
-          <v-card :href="art.url">
+      <v-row >
+        <v-col align="center" >
+          <v-card :href="art.url" width="60%">
             <v-img
               :src="art.urlToImage"
-              height="400"
-        
             ></v-img>
             <v-card-title class="text-h6">
             {{ art.title }}
