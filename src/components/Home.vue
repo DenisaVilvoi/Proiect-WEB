@@ -1,46 +1,3 @@
-<template>
-    <div :is="takeCountry()"></div>
-    <div :is="fetchTopNews()"></div>
-    <v-main>
- <div v-for="(art,index) in articol" :key="index" >
-                
-      
-           <v-fade-transition mode="out-in">
-                <v-row>
-                    <v-col cols="4" >
-                        <v-card :href="art.url" >
-                            <v-img :src="this.articol[index].urlToImage" height="300"></v-img>
-                            <v-card-title class="text-h6">
-                                {{ art.title }}
-                            </v-card-title>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="4" >
-                        <v-card :href="art.url" >
-                            <v-img :src="this.articol[index+1].urlToImage" height="300"></v-img>
-                            <v-card-title class="text-h6">
-                                {{ art.title }}
-                            </v-card-title>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="4" >
-                        <v-card :href="art.url" >
-                            <v-img :src="this.articol[index+1].urlToImage" height="300"></v-img>
-                            <v-card-title class="text-h6">
-                                {{ art.title }}
-                            </v-card-title>
-                        </v-card>
-                    </v-col>
-
-
-                </v-row>
-            </v-fade-transition>
-        </div> 
-
-
-       
-    </v-main>
-</template>
 <script>
 export default {
     data: () => {
@@ -72,10 +29,40 @@ export default {
 
         },
 
-         takeCountry(test) {
-    console.log(test)
-    }
+        takeCountry(test) {
+            console.log(test)
+        }
     },
-  
+
 }
 </script>
+
+<template>
+    <div :is="takeCountry()"></div>
+    <div :is="fetchTopNews()"></div>
+    <v-main>
+        <v-banner align="center">
+            <h1>TOP DAILY NEWS</h1>
+        </v-banner>
+        <div v-for="art in articol" :key="art">
+            <v-container class="fill-height" fluid style="min-height: 434px">
+                <v-fade-transition mode="out-in">
+                    <v-row>
+
+                        <v-col align="center">
+                            <v-card :href="art.url" width="60%">
+                                <v-img :src="art.urlToImage"></v-img>
+                                <v-card-title>
+                                    {{ art.title }}
+                                </v-card-title>
+                            </v-card>
+                        </v-col>
+
+                    </v-row>
+                </v-fade-transition>
+            </v-container>
+
+        </div>
+    </v-main>
+</template>
+
