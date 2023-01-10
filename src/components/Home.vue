@@ -61,7 +61,6 @@ export default {
                     </v-row>
                 </v-fade-transition>
             </v-container>
-
         </div>
     </v-main>
 </template>
