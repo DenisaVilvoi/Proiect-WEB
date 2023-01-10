@@ -16,16 +16,16 @@ export default {
     return {
       items: [
         {
-          src: './images/news.jpg',
+          src: './images/baraNav.jpg',
         },
         {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+          src: './images/home.jpg',
         },
         {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+          src: './images/topNews.jpg',
         },
         {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+          src: './images/SearchNews.jpg',
         },
       ],
     }
